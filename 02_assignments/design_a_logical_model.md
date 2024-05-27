@@ -16,6 +16,12 @@ _Hint, search type 1 vs type 2 slowly changing dimensions._
 Bonus: Are there privacy implications to this, why or why not?
 ```
 Your answer...
+SCD Type 1 - Overwrite
+In this approach there will be a 1:1 relationship between the customer and customer_address table. Every time there is an updated, the new address will replace the old address.
+This seems good for handling user data privacy as only the required data is retained.(Example -Most retail stores keep just the current adress for delivery)
+SCD Type 2 - Add new row
+In this approach there will be multiple address entries for the same user with a start and end date to indicate the current address.
+There may be privacy concerns as the user's old data is retained. It should be a good practice to get user authorization to retain this data. (Example - Government or background verification/tracking agencies)
 ```
 
 ## Question 4
@@ -24,6 +30,7 @@ Review the AdventureWorks Schema [here](https://i.stack.imgur.com/LMu4W.gif)
 Highlight at least two differences between it and your ERD. Would you change anything in yours?
 ```
 Your answer...
+The sample ERD has additional tables for Dbo like Error and Db log. Also, they have many more tables and attributes to make a functional bookstore. They also have additional attributes to take care of online orders, multiple currencies, regions. I would like to include these in a more elaborate version of my ERD.
 ```
 
 # Criteria
