@@ -19,9 +19,21 @@ Your answer...
 SCD Type 1 - Overwrite
 In this approach there will be a 1:1 relationship between the customer and customer_address table. Every time there is an updated, the new address will replace the old address.
 This seems good for handling user data privacy as only the required data is retained.(Example -Most retail stores keep just the current adress for delivery)
+CREATE TABLE Customer_address (
+    CustomerID INT PRIMARY KEY,
+    Address VARCHAR(100) NOT NULL
+);
+In the above created table, if you try to insert another address for an existing customerID, an error will be thrown. You can only update an existing row
 SCD Type 2 - Add new row
 In this approach there will be multiple address entries for the same user with a start and end date to indicate the current address.
 There may be privacy concerns as the user's old data is retained. It should be a good practice to get user authorization to retain this data. (Example - Government or background verification/tracking agencies)
+CREATE TABLE Customer_address (
+    CustomerID INT,
+    Address VARCHAR(100) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date  NOT NULL
+);
+In the above table, Customer ID is not Unique, hence multuple addresses for same customer ID can exist with different dates.However, we need to build logic so that the dates are not overlapping and the end date is after the start date etc.
 ```
 
 ## Question 4
